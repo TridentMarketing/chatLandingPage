@@ -200,7 +200,7 @@ body {
 
 /* Hero Section */
 .hero {
-    height: 70vh;
+    height: 35vh;
     background: linear-gradient(
         rgba(30, 60, 114, 0.7),
         rgba(42, 82, 152, 0.7)
@@ -262,7 +262,7 @@ body {
 
 /* Chat Hours Section */
 .chat-hours {
-    padding: 5rem 0;
+    padding: 3rem 0;
     background-color: #f8f9fa;
 }
 
@@ -328,24 +328,76 @@ body {
     color: white;
 }
 
+/* Expert Message Section */
+.expert-message {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+    border-left: 4px solid #2a5298;
+}
+
+.message-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.notification-icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background-color: #dc3545;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.message-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+}
+
 /* Services Section */
 .services {
-    padding: 5rem 0;
+    padding: 3rem 0;
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 2fr 1fr;
     gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .service-card {
     background: white;
-    padding: 2rem 1.5rem;
+    padding: 2rem;
     border-radius: 12px;
-    text-align: center;
     border: 2px solid #e9ecef;
     transition: all 0.3s ease;
+}
+
+.service-card.featured {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 200px;
 }
 
 .service-card:hover {
@@ -354,9 +406,30 @@ body {
     box-shadow: 0 8px 25px rgba(42, 82, 152, 0.15);
 }
 
-.service-icon {
-    font-size: 2.5rem;
+.service-content {
+    text-align: center;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
     margin-bottom: 1rem;
+    background-color: #2a5298;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.service-card.featured .service-title {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.service-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .service-card h3 {
@@ -371,9 +444,70 @@ body {
     line-height: 1.6;
 }
 
+/* Manage Reservations Section */
+.manage-reservations {
+    padding: 2rem 0;
+    background-color: #f8f9fa;
+}
+
+.reservation-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e3c72;
+    margin-bottom: 1rem;
+}
+
+.reservation-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Member Portal Section */
+.member-portal {
+    padding: 2rem 0;
+}
+
+.portal-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.portal-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e3c72;
+    margin-bottom: 1rem;
+}
+
+.portal-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
 /* Terms Section */
 .terms {
-    padding: 5rem 0;
+    padding: 3rem 0;
     background-color: #f8f9fa;
 }
 
@@ -541,25 +675,79 @@ body {
     }
     
     .hero {
-        height: 60vh;
+        height: 25vh;
         padding: 0 20px;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin: 0;
+    }
+    
+    .logo h1 {
+        font-size: 1.5rem;
     }
     
     .hero-subtitle {
         font-size: 1.2rem;
     }
     
-    .section-header h2 {
-        font-size: 2rem;
+    .hero-subtitle,
+    .hero-description {
+        display: none;
     }
     
-    .hours-grid,
-    .services-grid {
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+    }
+    
+    .hours-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .chat-hours {
+        padding: 2rem 0;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+    
+    .footer-section h3,
+    .footer-section h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .footer-section ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 1rem;
+        justify-items: center;
+    }
+    
+    .footer-section ul li {
+        margin-bottom: 0.25rem;
     }
     
     .chat-button {
@@ -598,8 +786,21 @@ body {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding: 0 15px;
+        min-height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.7rem;
+        margin: 0;
+    }
+    
+    .logo h1 {
+        font-size: 1.3rem;
     }
     
     .hero-subtitle {
@@ -610,8 +811,35 @@ body {
         font-size: 1rem;
     }
     
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section-header p {
+        font-size: 0.9rem;
+    }
+    
     .terms-section,
     .hours-card {
         padding: 1.5rem;
+    }
+    
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-section ul {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .footer-section h3,
+    .footer-section h4 {
+        font-size: 1.1rem;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+        font-size: 0.9rem;
     }
 }
