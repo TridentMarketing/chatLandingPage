@@ -19,28 +19,21 @@ function closeDropdown() {
 
 // Chat functionality
 function startChat() {
-    // Check if chat is available based on current time
-    const now = new Date();
-    const day = now.getDay(); // 0 = Sunday, 6 = Saturday
-    const hour = now.getHours();
+    // Check if chat is available based on EST time
+    const { day, hour } = getESTDateTime();
     
     let isOnline = false;
     let message = '';
     
     if (day >= 1 && day <= 5) { // Monday to Friday
-        if (hour >= 9 && hour < 21) {
+        if (hour >= 9 && hour < 17) { // 9AM to 5PM EST
             isOnline = true;
             message = 'Connecting you to a live agent...';
         } else {
             message = 'Our agents are currently offline. You can leave a message and we\'ll get back to you within 24 hours.';
         }
     } else { // Weekend
-        if (hour >= 10 && hour < 18) {
-            isOnline = true;
-            message = 'Connecting you to a weekend support agent...';
-        } else {
-            message = 'Our weekend support is currently offline. You can leave a message and we\'ll get back to you within 24 hours.';
-        }
+        message = 'Our agents are currently offline during weekends. You can leave a message and we\'ll get back to you within 24 hours.';
     }
     
     // Show chat interface or redirect to chat platform
@@ -152,26 +145,38 @@ function closeChatModal() {
     }
 }
 
-// Update chat button status based on current time
+// Helper function to get current EST/EDT time
+function getESTDateTime() {
+    const now = new Date();
+    const estTime = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+    return {
+        day: estTime.getDay(),
+        hour: estTime.getHours(),
+        minute: estTime.getMinutes(),
+        fullDate: estTime
+    };
+}
+
+// Update chat button status based on EST time
 function updateChatStatus() {
     const chatStatus = document.querySelector('.chat-status');
-    const now = new Date();
-    const day = now.getDay();
-    const hour = now.getHours();
+    const { day, hour } = getESTDateTime();
     
     let isOnline = false;
     
     if (day >= 1 && day <= 5) { // Monday to Friday
-        isOnline = hour >= 9 && hour < 21;
-    } else { // Weekend
-        isOnline = hour >= 10 && hour < 18;
+        isOnline = hour >= 9 && hour < 17; // 9AM to 5PM EST
     }
+    // Weekends are always offline
     
     if (chatStatus) {
         chatStatus.className = `chat-status ${isOnline ? 'online' : 'offline'}`;
         if (!isOnline) {
             chatStatus.style.backgroundColor = '#dc3545';
             chatStatus.style.animation = 'none';
+        } else {
+            chatStatus.style.backgroundColor = '#fff';
+            chatStatus.style.animation = 'blink 1.5s infinite';
         }
     }
 }
