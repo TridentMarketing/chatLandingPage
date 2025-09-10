@@ -1,1 +1,11 @@
 .vercel
+
+# Environment files (contains sensitive API credentials)
+.env
+.env.local
+.env.development
+.env.production
+.env.*
+
+# Databricks
+.databricks/
